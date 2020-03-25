@@ -4,6 +4,9 @@
 
 <h1>Your Pragmatic Catalog</h1>
 
+<% if @show_visits_count %>
+    <p>You've here for <%= @visits_count %> and didn't add a new product</p>
+<% end %>
 <ul class="catalog">
     <% cache @products do %>
         <% @products.each do |product| %>
@@ -16,6 +19,8 @@
                     </p>
                     <div class="price">
                         <%= number_to_currency(product.price) %>
+
+                        <%= button_to 'Add to Cart', line_items_path(product_id: product)%>
                     </div>
                 </li>
             <% end %>   
