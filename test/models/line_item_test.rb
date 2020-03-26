@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class LineItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "line_item attributes must not be empty" do
+    line_item = LineItem.new
+    assert line_item.invalid?
+    assert line_item.errors[:product].any?
+    assert line_item.errors[:cart].any?
+  end
 end

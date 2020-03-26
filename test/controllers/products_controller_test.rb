@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @product = products(:one)
+    @product = products(:docker_rails)
     @title = "The Great Book #{rand(1000)}"
   end
 
@@ -63,7 +63,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "can't delete product in cart" do
     assert_difference('Product.count', 0) do
-      delete product_url(products(:two))
+      delete product_url(products(:chatbot))
     end
 
     assert_redirected_to products_url
