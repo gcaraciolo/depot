@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class StoreControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    post line_items_url, params: { product_id: products(:ruby).id }
+  end
   test "should get index" do
     get store_index_url
     assert_response :success
