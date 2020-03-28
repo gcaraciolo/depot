@@ -39,16 +39,42 @@
         }
     }
 
+    .actions {
+        width: 180px;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        align-items: flex-end;
+        -webkit-box-orient: horizontal;
+        justify-content: space-between;
+
+        font-size: 1em;
+    }
+
     input[type="submit"] {
         background-color: #881;
         border-radius: 0.354em;
         border: solid thin #441;
         color: white;
-        font-size: 1em;
+        
         padding: 0.354em 1em;
     }
 
     input[type="submit"]:hover {
         background-color: #992;
+    }
+
+    input[class="checkout"] {
+        background-color: #bfb;
+        border-radius: 0.354em;
+        border: solid thin #888;
+        color: black;
+
+        font-weight: bold;
+        padding: 0.354em 1em;
+    }
+
+    input[class="checkout"]:hover {
+        background-color: #9d9;
     }
 }

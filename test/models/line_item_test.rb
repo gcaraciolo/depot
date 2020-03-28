@@ -5,6 +5,5 @@ class LineItemTest < ActiveSupport::TestCase
     line_item = LineItem.new
     assert line_item.invalid?
     assert line_item.errors[:product].any?
-    assert line_item.errors[:cart].any?
   end
 end
