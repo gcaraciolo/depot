@@ -14,6 +14,18 @@ class Cart < ApplicationRecord
         current_item
     end
 
+    def remove_product(line_item)
+        changelog = {
+            quantity: line_item.quantity - 1
+        }
+
+        if changelog[:quantity] <= 0
+            line_item.destroy!
+        else
+            line_item.update!(changelog)
+        end
+    end
+
     def total_price
         line_items.to_a.sum { |li| li.total_price }.to_f
     end

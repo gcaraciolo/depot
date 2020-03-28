@@ -58,4 +58,12 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to store_index_url
   end
+
+  test "should decrease line_item quantity" do
+    assert_difference -> { LineItem.find(@line_item.id).quantity }, -1 do
+      post line_item_decrease_quantity_path(@line_item)
+    end
+
+    assert_redirected_to store_index_url
+  end
 end

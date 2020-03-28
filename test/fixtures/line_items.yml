@@ -4,8 +4,10 @@ one:
   product: chatbot
   cart: one
   price: chatbot.price
+  quantity: 2
 
 two:
   product: chatbot
   cart: two
   price: chatbot.price
+  quantity: 2

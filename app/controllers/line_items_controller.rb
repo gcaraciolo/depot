@@ -1,8 +1,8 @@
 class LineItemsController < ApplicationController
   include CurrentCart, StoreVisitsCounter
 
-  before_action :set_cart, only: [:create]
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:create, :decrease_quantity]
+  before_action :set_line_item, only: [:show, :edit, :update, :destroy, :decrease_quantity]
 
   # GET /line_items
   # GET /line_items.json
@@ -68,10 +68,20 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def decrease_quantity
+    @cart.remove_product(@line_item)
+
+    respond_to do |format|
+      format.html { redirect_to store_index_path, notice: 'Product quantity successfully decreased.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
-      @line_item = LineItem.find(params[:id])
+      id = params[:id] || params[:line_item_id]
+      @line_item = LineItem.find(id)
     end
 
     # Only allow a list of trusted parameters through.
