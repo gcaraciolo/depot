@@ -74,6 +74,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to store_index_path, notice: 'Product quantity successfully decreased.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -81,7 +82,7 @@ class LineItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
       id = params[:id] || params[:line_item_id]
-      @line_item = LineItem.find(id)
+      @line_item = LineItem.find(id) ## @cart.line_items.find() ## security
     end
 
     # Only allow a list of trusted parameters through.
