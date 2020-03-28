@@ -26,6 +26,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'td', "Programming Ruby 1.9"
   end
 
+  # um teste melhor não seria verificando o HTML da página final?
   test "should create line_item via ajax" do
     assert_difference('LineItem.count') do
       post line_items_url, params: { product_id: products(:ruby).id }, xhr: true
