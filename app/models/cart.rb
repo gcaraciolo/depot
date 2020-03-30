@@ -14,6 +14,10 @@ class Cart < ApplicationRecord
         current_item
     end
 
+    ## pesquisar sobre chamadas save/update/create/destroy dentro de models.
+    ## aparentemente, a indicação é usar operações
+    ## em coleções do modelo
+    ## e fora do método, chamar save/update/create/delete/destroy
     def remove_product(line_item)
         changelog = {
             quantity: line_item.quantity - 1

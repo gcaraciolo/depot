@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  root 'store#index', as: 'store_index'
+
   resources :orders
   resources :line_items do
-    post 'decrease-quantity', to: 'line_items#decrease_quantity', as: 'decrease_quantity'
+    post 'decrease-quantity', on: :member
   end
 
   resources :carts, only: [:show, :destroy]
-  root 'store#index', as: 'store_index'
-  resources :products
+  resources :products do
+    get :who_bought, on: :member
+  end
 end

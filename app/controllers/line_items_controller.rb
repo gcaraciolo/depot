@@ -81,8 +81,7 @@ class LineItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
-      id = params[:id] || params[:line_item_id]
-      @line_item = LineItem.find(id) ## @cart.line_items.find() ## security
+      @line_item = @cart.line_items.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
