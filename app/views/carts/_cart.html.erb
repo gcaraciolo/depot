@@ -10,14 +10,17 @@
             </tr>
         </tfoot>
     </table>
+ 
+    <h1><%=  %></h1>
 
     <div class="actions">
         <%= button_to 'Empty cart', cart, method: :delete, 
             data: { confirm: 'Are you sure?' },
             remote: true %>
-        
+
         <%= button_to 'Checkout', new_order_path,
             method: :get,
-            class: 'checkout' %>
+            class: 'checkout',
+            :disabled => current_path_begins_with('orders') %>
     </div>
 </article>

@@ -77,4 +77,9 @@
     input[class="checkout"]:hover {
         background-color: #9d9;
     }
+
+    input[class="checkout"]:disabled {
+        background-color: #d3dad3;
+        opacity: 0.4;
+    }
 }
