@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart, StoreVisitsCounter
 
-  before_action :set_cart, only: [:create, :decrease_quantity]
+  before_action :set_cart, only: [:create, :update, :destroy, :decrease_quantity]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy, :decrease_quantity]
 
   # GET /line_items

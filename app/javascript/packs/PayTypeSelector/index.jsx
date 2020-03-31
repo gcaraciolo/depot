@@ -31,7 +31,7 @@ class PayTypeSelector extends React.Component {
                         onChange={this.onPayTypeSelected}>
                         <option value="">Select a payment</option>
                         <option value="Check">Check</option>
-                        <option value="Credit card">Credit cart</option>
+                        <option value="Credit card">Credit card</option>
                         <option value="Purchase order">Purchase order</option>
                     </select>
                 </div>
