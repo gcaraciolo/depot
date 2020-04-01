@@ -61,7 +61,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should decrease line_item quantity" do
     assert_difference -> { LineItem.find(@line_item.id).quantity }, -1 do
-      post line_item_decrease_quantity_path(@line_item)
+      post decrease_quantity_line_item_path(@line_item)
     end
 
     assert_redirected_to store_index_url
@@ -69,7 +69,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should remove cart when line_items are empty via ajax" do
     assert_difference -> { LineItem.find(@line_item.id).quantity }, -1 do
-      post line_item_decrease_quantity_path(@line_item), xhr: true
+      post decrease_quantity_line_item_path(@line_item), xhr: true
     end
 
     assert_match /innerHTML = '';/, @response.body
@@ -81,7 +81,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     assert_match /"quantity\\\">2/, @response.body
     cart = Cart.find(session[:cart_id])
-    post line_item_decrease_quantity_path(cart.line_items.first), xhr: true
+    post decrease_quantity_line_item_path(cart.line_items.first), xhr: true
 
     assert_match /"quantity\\\">1/, @response.body
   end

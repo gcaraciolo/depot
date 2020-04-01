@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart, StoreVisitsCounter
 
-  before_action :set_cart, only: [:create, :update, :destroy, :decrease_quantity]
+  before_action :set_cart
   before_action :set_line_item, only: [:show, :edit, :update, :destroy, :decrease_quantity]
 
   # GET /line_items
@@ -81,7 +81,7 @@ class LineItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
-      @line_item = @cart.line_items.find(params[:id])
+      @line_item = LineItem.find(params[:id]) # @cart.line_items.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
