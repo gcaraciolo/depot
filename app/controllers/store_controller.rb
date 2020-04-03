@@ -1,6 +1,7 @@
 class StoreController < ApplicationController
   include StoreVisitsCounter, CurrentCart
   before_action :set_cart
+  skip_before_action :authorize
 
   def index
     increment_store_visits_counter
