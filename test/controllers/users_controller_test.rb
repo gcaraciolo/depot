@@ -45,4 +45,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to users_url
   end
+
+  test "unlogged in should not destroy user" do
+    logout
+    assert_difference('User.count', 0) do
+      delete user_url(@user)
+    end
+
+    assert_redirected_to login_url
+  end
 end
